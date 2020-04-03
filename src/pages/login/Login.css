@@ -1,0 +1,9 @@
+.login-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.75rem;
+  background: url('./login_bg.png') no-repeat;
+  background-size: 3.75rem 6.67rem;
+  height: 6.67rem;
+}
