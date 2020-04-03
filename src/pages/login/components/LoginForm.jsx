@@ -3,6 +3,7 @@ import { Input } from 'antd'
 import { Button } from 'antd';
 import { MailOutlined, UnlockOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 const myForms = {
   width: "3.20rem",
@@ -43,30 +44,60 @@ const Unknown = {
   marginTop: "20px",
 }
 
-function LoginForm() {
-  return (
-    <div style={myForms}>
-      <Input size="large"
-        placeholder="邮箱"
-        style={loginInputRadiusTop}
-        prefix={<MailOutlined />}
-      />
-      <Input.Password size="large"
-        placeholder="密码"
-        style={loginInputRadiusBon}
-        prefix={<UnlockOutlined />}
-      />
-      <div style={SubmitTool}>
-        <div style={Submit}>
-          <Button size="large" shape="round" ghost block>登录</Button>
+class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: ''
+    }
+  }
+
+  handleSubmit = () => {
+    const { username, password } = this.state
+    console.log(username, password)
+    const url = 'http://39.107.239.89/user/signup'
+    axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+    axios.post(url, {
+      username,
+      password
+    }
+    ).then((res) => {
+      console.log(res)
+    })
+  }
+
+  render() {
+    return (
+      <div style={myForms}>
+        <Input size="large"
+          placeholder="邮箱"
+          style={loginInputRadiusTop}
+          prefix={<MailOutlined />}
+          onChange={e => { this.setState({ username: e.target.value }) }}
+        />
+        <Input.Password size="large"
+          placeholder="密码"
+          style={loginInputRadiusBon}
+          prefix={<UnlockOutlined />}
+          onChange={e => { this.setState({ password: e.target.value }) }}
+        />
+        <div style={SubmitTool}>
+          <div style={Submit}>
+            <Button
+              size="large"
+              shape="round"
+              ghost block
+              onClick={this.handleSubmit}>
+              登录</Button>
+          </div>
+        </div>
+        <div style={Unknown}>
+          <Link to="#" style={{ color: "white" }}>忘记密码</Link>
         </div>
       </div>
-      <div style={Unknown}>
-        <Link to="#" style={{ color: "white" }}>忘记密码</Link>
-      </div>
-    </div>
-
-  )
+    );
+  }
 }
 
 export default LoginForm;
