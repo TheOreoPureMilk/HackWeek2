@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../login/logo.png'
 import { Link } from 'react-router-dom';
+import RegisterForm from './components/RegisterForm'
 
 function Register(props) {
   return (
@@ -13,7 +14,7 @@ function Register(props) {
         <div className="head-text">MEET YOUR ANOTHER SELF</div>
       </div>
       <div className="login-form">
-
+        <RegisterForm />
       </div>
     </div>
   )
