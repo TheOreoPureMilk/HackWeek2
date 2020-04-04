@@ -8,7 +8,7 @@ function Login(props) {
   return (
     <div className="login-body">
       <div className="register">
-        <Link to="#" style={{ float: "right", color: "white" }}>注册</Link>
+        <Link to="./register" style={{ float: "right", color: "white" }}>注册</Link>
       </div>
       <div className="logo-box">
         <img className="login-logo" src={logo} alt="logo" />

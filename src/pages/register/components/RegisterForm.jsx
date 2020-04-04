@@ -2,7 +2,7 @@ import React from 'react'
 import { Input } from 'antd'
 import { Button } from 'antd';
 import { MailOutlined, UnlockOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom';
+import { UserOutlined } from '@ant-design/icons';
 import axios from 'axios'
 
 const myForms = {
@@ -38,29 +38,25 @@ const SubmitTool = {
   marginTop: "30px",
 }
 
-const Unknown = {
-  display: "flex",
-  justifyContent: "center",
-  marginTop: "20px",
-}
-
-class LoginForm extends React.Component {
+class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      nickname: ''
     }
   }
 
   handleSubmit = () => {
-    const { username, password } = this.state
-    console.log(username, password)
-    const url = 'http://39.107.239.89/user/signin'
+    const { username, password, nickname } = this.state
+    console.log(username, password, nickname)
+    const url = 'http://39.107.239.89/user/signup'
     axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
     axios.post(url, {
       username,
-      password
+      password,
+      nickname
     }
     ).then((res) => {
       console.log(res)
@@ -76,8 +72,20 @@ class LoginForm extends React.Component {
           prefix={<MailOutlined />}
           onChange={e => { this.setState({ username: e.target.value }) }}
         />
+        <Input size="large"
+          placeholder="用户名"
+          style={loginInputRadiusTop}
+          prefix={<UserOutlined />}
+          onChange={e => { this.setState({ nickname: e.target.value }) }}
+        />
         <Input.Password size="large"
           placeholder="密码"
+          style={loginInputRadiusBon}
+          prefix={<UnlockOutlined />}
+          onChange={e => { this.setState({ password: e.target.value }) }}
+        />
+        <Input.Password size="large"
+          placeholder="确认密码"
           style={loginInputRadiusBon}
           prefix={<UnlockOutlined />}
           onChange={e => { this.setState({ password: e.target.value }) }}
@@ -92,12 +100,9 @@ class LoginForm extends React.Component {
               登录</Button>
           </div>
         </div>
-        <div style={Unknown}>
-          <Link to="#" style={{ color: "white" }}>忘记密码</Link>
-        </div>
       </div>
     );
   }
 }
 
-export default LoginForm;
+export default RegisterForm;
