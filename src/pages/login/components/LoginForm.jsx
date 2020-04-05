@@ -58,9 +58,9 @@ class LoginForm extends React.Component {
     message.loading('登录中...', 1.5);
     const { username, password } = this.state
     console.log(username, password)
-    const url = 'http://39.107.239.89/user/signin'
-    axios.defaults.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
-    axios.post(url, {
+    const url = 'http://39.107.239.89/api/user/'
+    axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8'
+    axios.post(url + 'signin', {
       username,
       password
     }
@@ -71,7 +71,7 @@ class LoginForm extends React.Component {
           message.info("登录失败：" + res.data.message, 3)
           console.log(res)
           this.setState({ btn: false })
-        } else if (res.data.status === 1) {
+        } else if (res.data.status === 0) {
           message.info("登录成功", 1)
           console.log(res)
           this.setState({ btn: false })
