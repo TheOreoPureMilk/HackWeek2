@@ -65,7 +65,6 @@ class LoginForm extends React.Component {
     }
     ).then(
       (res) => {
-        this.props.onLoading('over')
         this.setState({ isLoading: false })
         if (res.data.status === 2) {
           message.info("登录失败：" + res.data.message, 3)
@@ -74,7 +73,6 @@ class LoginForm extends React.Component {
           message.info("登录成功", 1)
           console.log(res)
         }
-
       })
 
   }
