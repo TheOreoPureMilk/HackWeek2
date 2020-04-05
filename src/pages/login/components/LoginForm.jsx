@@ -49,12 +49,13 @@ class LoginForm extends React.Component {
     this.state = {
       username: '',
       password: '',
+      btn: false
     }
   }
 
   handleSubmit = () => {
+    this.setState({ btn: true })
     message.loading('登录中...', 1.5);
-    this.props.onLoading('loading')
     const { username, password } = this.state
     console.log(username, password)
     const url = 'http://39.107.239.89/user/signin'
@@ -69,9 +70,11 @@ class LoginForm extends React.Component {
         if (res.data.status === 2) {
           message.info("登录失败：" + res.data.message, 3)
           console.log(res)
+          this.setState({ btn: false })
         } else if (res.data.status === 1) {
           message.info("登录成功", 1)
           console.log(res)
+          this.setState({ btn: false })
         }
       })
 
@@ -98,7 +101,9 @@ class LoginForm extends React.Component {
               size="large"
               shape="round"
               ghost block
-              onClick={this.handleSubmit}>
+              onClick={this.handleSubmit}
+              disabled={this.state.btn}
+            >
               登录</Button>
           </div>
         </div>

@@ -45,6 +45,11 @@ const SubmitTool = {
   marginTop: "30px",
 }
 
+const unVisibility = {
+  visibility: 'hidden',
+  color: 'red'
+}
+
 class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
@@ -58,18 +63,20 @@ class RegisterForm extends React.Component {
 
       nickname: '',
       effectiveNick: true,
-
       canRegister: false
     }
   }
 
   getEmail = (e) => {
     this.setState({ username: e.target.value })
-    for (let item in this.state.username) {
-      if (item === '@') {
+    for (let item = 0; item < this.state.username.length; item++) {
+      if (this.state.username[item] === '@') {
         this.setState({ effectiveUser: true })
+        document.getElementById("email").style.visibility = "hidden";
+        break
       } else {
         this.setState({ effectiveUser: false })
+        document.getElementById("email").style.visibility = "visible"
       }
     }
   }
@@ -78,30 +85,35 @@ class RegisterForm extends React.Component {
     this.setState({ nickname: e.target.value })
     if (e.target.value.length < 2) {
       this.setState({ effectiveNick: false })
+      document.getElementById("nickname").style.visibility = "visible"
     } else {
       this.setState({ effectiveNick: true })
+      document.getElementById("nickname").style.visibility = "hidden"
     }
   }
 
   getPassword = (e) => {
     this.setState({ password: e.target.value })
-    if (e.target.value.length < 8) {
+    if (e.target.value.length < 6) {
       this.setState({ effectivePass: false })
+      document.getElementById("password").style.visibility = "visible"
     } else {
       this.setState({ effectivePass: true })
+      document.getElementById("password").style.visibility = "hidden"
     }
   }
-  
+
   passwordCheck = (e) => {
-    if (e.target.value.length < 6) {
-      this.setState({ canRegister: false })
-    }
-    else if (e.target.value.length >= 6) {
+    if (e.target.value === this.state.password) {
+      document.getElementById('againPass').style.visibility = "hidden"
       this.setState({ canRegister: true })
     }
-    else this.setState({ canRegister: this.state.canRegister })
+    else {
+      this.setState({ canRegister: false })
+      document.getElementById('againPass').style.visibility = "visible"
+    }
   }
-  
+
   handleSubmit = () => {
     const { username, password, nickname } = this.state
     console.log(username, password, nickname)
@@ -116,7 +128,7 @@ class RegisterForm extends React.Component {
       console.log(res)
     })
   }
-  
+
   render() {
     return (
       <div style={myForms}>
@@ -127,7 +139,7 @@ class RegisterForm extends React.Component {
           onChange={this.getEmail}
         />
 
-        <span>something</span>
+        <span id="email" style={unVisibility}>请输入正确的邮箱</span>
 
         <Input size="large"
           placeholder="昵称"
@@ -136,7 +148,7 @@ class RegisterForm extends React.Component {
           onChange={this.getNickname}
         />
 
-        <span>something</span>
+        <span id="nickname" style={unVisibility}>至少两个字符</span>
 
         <Input.Password size="large"
           placeholder="密码"
@@ -144,17 +156,17 @@ class RegisterForm extends React.Component {
           prefix={<UnlockOutlined />}
           onChange={this.getPassword}
         />
-
-        <span>something</span>
-
+        {
+          <span id="password" style={unVisibility}>至少六个字符</span>
+        }
         <Input.Password size="large"
           placeholder="确认密码"
           style={loginInputRadiusBon}
           prefix={<UnlockOutlined />}
-          onChange={e => { this.setState({ passwordAgain: e.target.value }) }}
+          onChange={this.passwordCheck}
         />
 
-        <span>something</span>
+        <span id="againPass" style={unVisibility}>确保密码一致</span>
 
         <div style={SubmitTool}>
           <div style={Submit}>
@@ -162,7 +174,9 @@ class RegisterForm extends React.Component {
               size="large"
               shape="round"
               ghost block
-              onClick={this.handleSubmit}>
+              onClick={this.handleSubmit}
+              disabled={!this.state.canRegister}
+            >
               注册
             </Button>
           </div>
