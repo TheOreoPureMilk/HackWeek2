@@ -1,6 +1,5 @@
 import React from 'react'
-import { Input } from 'antd'
-import { Button } from 'antd';
+import { Input, message, Button } from 'antd'
 import { MailOutlined, UnlockOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
@@ -49,11 +48,13 @@ class LoginForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
     }
   }
 
   handleSubmit = () => {
+    message.loading('登录中...', 1.5);
+    this.props.onLoading('loading')
     const { username, password } = this.state
     console.log(username, password)
     const url = 'http://39.107.239.89/user/signin'
@@ -62,9 +63,20 @@ class LoginForm extends React.Component {
       username,
       password
     }
-    ).then((res) => {
-      console.log(res)
-    })
+    ).then(
+      (res) => {
+        this.props.onLoading('over')
+        this.setState({ isLoading: false })
+        if (res.data.status === 2) {
+          message.info("登录失败：" + res.data.message, 3)
+          console.log(res)
+        } else if (res.data.status === 1) {
+          message.info("登录成功", 1)
+          console.log(res)
+        }
+
+      })
+
   }
 
   render() {
