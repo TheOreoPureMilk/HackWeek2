@@ -60,10 +60,10 @@ class LoginForm extends React.Component {
     console.log(username, password)
     const url = 'http://39.107.239.89/api/user/'
     axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8'
-    axios.post(url + 'signin', {
+    axios.post(url + 'signin', JSON.stringify({
       username,
       password
-    }
+    })
     ).then(
       (res) => {
         this.setState({ isLoading: false })
