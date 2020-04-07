@@ -1,6 +1,7 @@
 import React from 'react';
 import './Mine.css'
-
+import LetterCard from './components/LetterCard'
+import headImage from './demo-img.png'
 
 function Mine(props) {
   const messageCount = 1
@@ -16,8 +17,10 @@ function Mine(props) {
           我的
         </div>
         <div className="user-info">
+          <div className='image-box'>
+            <img alt='' src={headImage} className='user-image' />
+          </div>
 
-          <img alt='?????>>>>>' src={'#'} className='user-image' />
           <div className='user-info-show'>
             <span className='user-nick'>爱吃草的羊</span>
             <span className='user-sex'>♂</span>
@@ -37,6 +40,24 @@ function Mine(props) {
           <div className='sad-item'>
             <div className='sad-item-text'>解忧信</div>
           </div>
+        </div>
+        <div className='mine-letter-body'>
+          <div className='mine-letter-mounth'>4月</div>
+
+          <div className='letter-box'>
+            <div className='letter-time-box'>
+              <div className='letter-time'>17th</div>
+            </div>
+            <LetterCard />
+          </div>
+
+          <div className='letter-box'>
+            <div className='letter-time-box'>
+              <div className='letter-time'>17th</div>
+            </div>
+            <LetterCard />
+          </div>
+
         </div>
       </div>
       <div className='footer'></div>
