@@ -38,7 +38,8 @@
 
 .text-content {
   width: 2.0rem;
-  font-size: 0.09rem;
+  font-size: 0.13rem;
+  font-weight: 700;
   color: #6E9DA9;
   padding-left: 0.1rem;
 }

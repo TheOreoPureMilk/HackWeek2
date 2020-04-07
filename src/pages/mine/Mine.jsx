@@ -1,7 +1,8 @@
 import React from 'react';
 import './Mine.css'
-import LetterCard from './components/LetterCard'
+
 import headImage from './demo-img.png'
+import LetterItem from './components/LetterItem'
 
 function Mine(props) {
   const messageCount = 1
@@ -43,24 +44,25 @@ function Mine(props) {
         </div>
         <div className='mine-letter-body'>
           <div className='mine-letter-mounth'>4月</div>
-
-          <div className='letter-box'>
-            <div className='letter-time-box'>
-              <div className='letter-time'>17th</div>
-            </div>
-            <LetterCard />
-          </div>
-
-          <div className='letter-box'>
-            <div className='letter-time-box'>
-              <div className='letter-time'>17th</div>
-            </div>
-            <LetterCard />
-          </div>
-
+          <LetterItem />
+          <LetterItem />
+          <LetterItem />
+          <LetterItem />
         </div>
       </div>
-      <div className='footer'></div>
+      <div className='footer-body'>
+        <div className='footer'>
+          <div className='swicth-to-tree'>
+
+          </div>
+          <div className='swicth-to-lib'>
+
+          </div>
+          <div className='swicth-to-mine'>
+
+          </div>
+        </div>
+      </div>
     </div >
   )
 }

@@ -11,7 +11,9 @@ function LetterCard(props) {
           </div>
         </div>
         <div className='text-content-box'>
-          <div className='text-content'>一点点测试用的小内容</div>
+          <div className='text-content'>
+            一点点测试用的小内容...
+          </div>
         </div>
       </div>
     </div>
