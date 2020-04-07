@@ -1,0 +1,18 @@
+.letter-box {
+  width: 3.1rem;
+  height: 1.1rem;
+  margin-bottom: 0.3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.letter-time {
+  text-align: center;
+  width: 0.27rem;
+  color: #86A2B6;
+}
+
+.letter-time-box {
+  display: flex;
+  align-items: center;
+}
