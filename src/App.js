@@ -9,6 +9,8 @@ import {
 import Login from './pages/login/Login'
 import Register from './pages/register/Register';
 import Mine from './pages/mine/Mine'
+import Retrieve from './pages/retrieve/Retrieve'
+
 
 function App() {
   return (
@@ -23,6 +25,9 @@ function App() {
           </Route>
           <Route path="/">
             <Mine />
+          </Route>
+          <Route path="retrieve">
+            <Retrieve />
           </Route>
         </Switch>
       </Router>
