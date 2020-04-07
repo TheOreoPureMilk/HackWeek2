@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import logo from './logo.png'
+import logo from '../login/logo.png'
+import RetrieveForm from './components/RetrieveForm'
 
 class Retrieve extends React.Component {
   constructor(props) {
@@ -11,14 +12,14 @@ class Retrieve extends React.Component {
     return (
       <div className="login-body">
         <div className="register">
-          <Link to="./register" style={{ float: "right", color: "white" }}>注册</Link>
+          <Link to="./login" style={{ float: "right", color: "white" }}>返回登录</Link>
         </div>
         <div className="logo-box">
           <img className="login-logo" src={logo} alt="logo" />
           <div className="head-text">MEET YOUR ANOTHER SELF</div>
         </div>
         <div className="login-form" >
-
+          <RetrieveForm />
         </div>
       </div>
     );

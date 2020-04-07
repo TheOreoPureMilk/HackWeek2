@@ -23,11 +23,11 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
+          <Route path="/retrieve">
+            <Retrieve />
+          </Route>
           <Route path="/">
             <Mine />
-          </Route>
-          <Route path="retrieve">
-            <Retrieve />
           </Route>
         </Switch>
       </Router>

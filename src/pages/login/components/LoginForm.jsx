@@ -7,21 +7,22 @@ import axios from 'axios'
 const myForms = {
   width: "3.20rem",
   height: "1.26rem",
-  borderRadius: "0.07rem"
+  borderRadius: "0.07rem",
 }
 
 const loginInputRadiusTop = {
   height: "60px",
   fontSize: '30px',
-  borderRadius: "7px 7px 0 0",
+  borderRadius: "7px 7px",
   color: "#C0C0C0",
-  boxShadow: "3px 3px 10px #646464"
+  boxShadow: "3px 3px 10px #646464",
+  marginBottom: '0.2rem'
 }
 
 const loginInputRadiusBon = {
   height: "60px",
   fontSize: '30px',
-  borderRadius: "0 0 7px 7px",
+  borderRadius: "7px 7px",
   color: "#C0C0C0",
   boxShadow: "3px 3px 10px #646464"
 }
@@ -108,7 +109,7 @@ class LoginForm extends React.Component {
           </div>
         </div>
         <div style={Unknown}>
-          <Link to="#" style={{ color: "white" }}>忘记密码</Link>
+          <Link to="/retrieve" style={{ color: "white" }}>忘记密码</Link>
         </div>
       </div>
     );
