@@ -7,7 +7,7 @@
 }
 
 .mine-head {
-  width: 3.8rem;
+  width: 100%;
   height: 2.2rem;
   background-color: gray;
 }
@@ -40,12 +40,17 @@
   color: white;
   padding-left: 0.2rem;
   margin-top: 0.2rem;
+  position: absolute;
+  top: 0.7rem;
 }
 
 .user-info {
   width: 100%;
   height: 0.48rem;
   margin-top: 0.1rem;
+  position: absolute;
+  position: absolute;
+  top: 1.3rem;
 }
 
 .image-box {
@@ -93,7 +98,7 @@
 
 .mine-body {
   margin-top: -0.4rem;
-  width: 3.8rem;
+  width: 100%;
   height: 4.5rem;
   border-radius: 0.2rem 0.2rem 0 0;
   background-color: white;
@@ -134,29 +139,35 @@
 }
 
 .mine-letter-body {
-  padding: 0.3rem;
+  padding: 0.15rem;
   height: 3.54rem;
   overflow: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .mine-letter-mounth {
   color: #86A2B6;
   font-weight: 700;
+  width: 100%;
 }
 
-.footer {
-  margin-top: -0.2rem;
-  width: 3.8rem;
-  height: .5rem;
-  background-color: #ECEAEA;
-  display: flex;
-  justify-content: space-around;
+.footer-body {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 
-.swicth-to-tree, .swicth-to-mine, .swicth-to-lib {
-  width: 33%
+.mine-add {
+  position: fixed;
+  width: 0.38rem;
+  height: 0.38rem;
+  bottom: 0.7rem;
+  right: 0.2rem
 }
 
-.swicth-to-lib {}
-
-.swicth-to-mine {}
+.mine-add-img {
+  max-width: 0.38rem;
+  max-height: 0.38rem;
+}

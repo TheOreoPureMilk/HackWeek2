@@ -1,8 +1,9 @@
 import React from 'react';
 import './Mine.css'
-
+import Footer from '../../components/Footer/Footer'
 import headImage from './demo-img.png'
 import LetterItem from './components/LetterItem'
+import add from './add.png'
 
 function Mine(props) {
   const messageCount = 1
@@ -51,19 +52,12 @@ function Mine(props) {
         </div>
       </div>
       <div className='footer-body'>
-        <div className='footer'>
-          <div className='swicth-to-tree'>
-
-          </div>
-          <div className='swicth-to-lib'>
-
-          </div>
-          <div className='swicth-to-mine'>
-
-          </div>
-        </div>
+        <Footer />
       </div>
-    </div >
+      <div className='mine-add'>
+        <img src={add} alt="新建" className='mine-add-img' />
+      </div>
+    </div>
   )
 }
 
