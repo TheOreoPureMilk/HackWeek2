@@ -3,11 +3,14 @@ import './Footer.css'
 import tree from './tree.png'
 import lib from './lib.png'
 import mine from './mine.png'
-
+import lib_bg from './lib_bg.png'
 
 function Footer() {
   return (
     <div className='footer'>
+      <div className='lib-bg'>
+        <img src={lib_bg} alt="" className='lib-bg-img' />
+      </div>
       <div className='swicth-to-tree'>
         <div className='tree-content'>
           <div className='tree-img'>
@@ -21,7 +24,7 @@ function Footer() {
           <div className='lib-img'>
             <img src={lib} alt="" />
           </div>
-          <div>故事馆</div>
+          <p>故事馆</p>
         </div>
       </div>
       <div className='swicth-to-mine'>

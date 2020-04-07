@@ -18,13 +18,29 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: .5rem
+  width: .5rem;
+  font-size: 0.12rem;
+  z-index: 100;
 }
 
-.mine-img, .tree-img {
+.lib-content {
+  color: #ECEAEA;
+}
+
+.mine-img, .tree-img, .lib-img {
   width: .4rem;
   height: .3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.lib-bg {
+  position: fixed;
+  margin-top: -0.15rem;
+}
+
+.lib-bg-img {
+  max-width: 1.39rem;
+  max-height: 1.45rem;
 }
