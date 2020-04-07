@@ -1,0 +1,51 @@
+.footer-body {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.lib-body {
+  width: 100%;
+  height: 100%;
+  background-image: url('./lib-bg.png');
+  background-size: 100% 80%;
+  background-repeat: no-repeat;
+}
+
+.switch-tab {
+  width: 2.3rem;
+  height: 0.4rem;
+  border: 1px solid red;
+  border-radius: 0.07rem;
+  position: fixed;
+  left: 20%;
+  top: 16%;
+  display: flex;
+  justify-items: auto;
+  background-color: white;
+}
+
+.to-luck-letter, .to-sad-letter {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.to-luck-letter {
+  color: #6795A4;
+}
+
+.to-sad-letter {
+  color: white
+}
+
+.letter-content {
+  width: 3rem;
+  height: 3.2rem;
+  border: 1px solid red;
+  position: fixed;
+  left: 13%;
+  top: 27%;
+}

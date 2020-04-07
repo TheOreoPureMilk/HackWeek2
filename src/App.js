@@ -10,6 +10,7 @@ import Login from './pages/login/Login'
 import Register from './pages/register/Register';
 import Mine from './pages/mine/Mine'
 import Retrieve from './pages/retrieve/Retrieve'
+import Library from './pages/librarys/Library';
 
 
 function App() {
@@ -17,17 +18,20 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/login">
+          <Route path="/login" exact>
             <Login />
           </Route>
-          <Route path="/register">
+          <Route path="/register" exact>
             <Register />
           </Route>
-          <Route path="/retrieve">
+          <Route path="/retrieve" exact>
             <Retrieve />
           </Route>
-          <Route path="/">
+          <Route path="/" exact>
             <Mine />
+          </Route>
+          <Route path="/library" exact>
+            <Library />
           </Route>
         </Switch>
       </Router>
