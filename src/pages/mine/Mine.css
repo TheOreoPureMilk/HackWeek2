@@ -18,8 +18,9 @@
 }
 
 .mes-box {
-  margin-left: 3.3rem;
-  margin-top: 0.1rem;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
   width: 0.28rem;
   height: 0.38rem;
   color: white;
