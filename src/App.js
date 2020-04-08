@@ -11,7 +11,7 @@ import Register from './pages/register/Register';
 import Mine from './pages/mine/Mine'
 import Retrieve from './pages/retrieve/Retrieve'
 import Library from './pages/librarys/Library';
-
+import Tree from './pages/tree/Tree'
 
 function App() {
   return (
@@ -26,6 +26,9 @@ function App() {
           </Route>
           <Route path="/retrieve" exact>
             <Retrieve />
+          </Route>
+          <Route path="/tree" exact>
+            <Tree />
           </Route>
           <Route path="/" exact>
             <Mine />
