@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { setToken } from '../../../Redux/actions/index'
 import { connect } from 'react-redux'
+import '../../../cookies/index'
+import { setCookie } from '../../../cookies/index';
+
 
 const myForms = {
   width: "3.20rem",
@@ -62,7 +65,7 @@ class LoginForm extends React.Component {
     const { username, password } = this.state
     console.log(username, password)
     const url = 'http://39.107.239.89/api/user/'
-    axios.defaults.headers['Content-Type'] = 'application/json;Charset=UTF-8'
+    axios.defaults.headers['Content-Type'] = 'application/json'
     axios.post(url + 'signin', {
       username,
       password
@@ -79,13 +82,14 @@ class LoginForm extends React.Component {
           console.log(res)
           this.setState({ btn: false })
           this.props.dispatch(setToken(res.data.data.token))
+          setCookie('token', res.data.data.token, 7)
+          window.location.href = './'
         }
       },
       (err) => {
         alert(err)
         this.setState({ btn: false })
       })
-
   }
 
   render() {

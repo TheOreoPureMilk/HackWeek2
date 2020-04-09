@@ -1,6 +1,5 @@
 import React from 'react'
-import { Input } from 'antd'
-import { Button } from 'antd';
+import { Button, Input, message } from 'antd';
 import { MailOutlined, UnlockOutlined } from '@ant-design/icons'
 import { UserOutlined } from '@ant-design/icons';
 import axios from 'axios'
@@ -125,7 +124,12 @@ class RegisterForm extends React.Component {
       nickname
     })
     ).then((res) => {
-      console.log(res)
+      if (res.data.status === 0) {
+        message.success(res.data.message + '!注册成功')
+      }
+      else if (res.data.status === 2) {
+        message.error(`${res.data.message}`)
+      }
     })
   }
 

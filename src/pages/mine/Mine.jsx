@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Mine.css'
 import Footer from '../../components/Footer/Footer'
 import headImage from './demo-img.png'
 import LetterItem from './components/LetterItem'
 import add from './add.png'
+import axios from 'axios';
+import { message } from 'antd';
+import '../../cookies'
+import { getCookie } from '../../cookies';
 
 function Mine(props) {
-  const messageCount = 1
+
+  useEffect(() => {
+    let token = getCookie('token')
+    if (token === '' || token === null) {
+      message.error('尚未登录！')
+      window.location.href = '../login'
+    }
+    else {
+      axios({
+        method: 'get',
+        url: 'http://39.107.239.89/api/user/info',
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Authorization': `Bearer ${token}`
+        }
+      })
+    }
+  })
+
   return (
     <div className='mine'>
       <div className='mine-head'>
         <div className="mine-mes-line">
-          <div className='mes-box'>
-            <span >{messageCount}</span>
-          </div>
+          <div className='mes-box'></div>
         </div>
         <div className="mine-head-text">
           我的
