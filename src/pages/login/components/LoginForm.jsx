@@ -3,6 +3,8 @@ import { Input, message, Button } from 'antd'
 import { MailOutlined, UnlockOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import { setToken } from '../../../Redux/actions/index'
+import { connect } from 'react-redux'
 
 const myForms = {
   width: "3.20rem",
@@ -60,11 +62,11 @@ class LoginForm extends React.Component {
     const { username, password } = this.state
     console.log(username, password)
     const url = 'http://39.107.239.89/api/user/'
-    axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8'
-    axios.post(url + 'signin', JSON.stringify({
+    axios.defaults.headers['Content-Type'] = 'application/json;Charset=UTF-8'
+    axios.post(url + 'signin', {
       username,
       password
-    })
+    }
     ).then(
       (res) => {
         this.setState({ isLoading: false })
@@ -76,7 +78,12 @@ class LoginForm extends React.Component {
           message.info("登录成功", 1)
           console.log(res)
           this.setState({ btn: false })
+          this.props.dispatch(setToken(res.data.data.token))
         }
+      },
+      (err) => {
+        alert(err)
+        this.setState({ btn: false })
       })
 
   }
@@ -115,5 +122,7 @@ class LoginForm extends React.Component {
     );
   }
 }
+
+LoginForm = connect()(LoginForm)
 
 export default LoginForm;
