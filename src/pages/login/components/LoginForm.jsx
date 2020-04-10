@@ -64,7 +64,7 @@ class LoginForm extends React.Component {
     message.loading('登录中...', 1.5);
     const { username, password } = this.state
     console.log(username, password)
-    const url = 'http://39.107.239.89/api/user/'
+    const url = 'https://thenebula.cn/api/user/'
     axios.defaults.headers['Content-Type'] = 'application/json'
     axios.post(url + 'signin', {
       username,

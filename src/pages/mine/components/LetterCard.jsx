@@ -12,7 +12,7 @@ function LetterCard(props) {
         </div>
         <div className='text-content-box'>
           <div className='text-content'>
-            一点点测试用的小内容...
+            {props.data}
           </div>
         </div>
       </div>

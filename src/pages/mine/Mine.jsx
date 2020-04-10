@@ -8,20 +8,18 @@ import axios from 'axios';
 import { message } from 'antd';
 import '../../cookies'
 import { getCookie } from '../../cookies';
-import { connect } from 'react-redux'
-import { setUserInfo } from '../../Redux/actions/index.js'
 
-function MinePage(props) {
+function Mine(props) {
   const [userInfo, setUserInfo] = useState({})
   const [pageNumber, setPageNumber] = useState(1)
   const [letterList, setLetterList] = useState([])
-
+  const [letterMounth,setLetterMounth] = useState(String)
   const getMore = () => {
     let token = getCookie('token')
     setPageNumber(pageNumber + 1)
     axios({
       method: 'get',
-      url: `http://39.107.239.89/api/letter/preview`,
+      url: `https://thenebula.cn/api/letter/preview`,
       headers: {
         'Content-Type': 'application/json;charset=UTF-8',
         'Authorization': `Bearer ${token}`
@@ -29,7 +27,10 @@ function MinePage(props) {
       params: { 'index': `${pageNumber + 1}` }
     }).then((res) => {
       console.log(res.data.data)
-      setLetterList(res.data.data.records)
+      if (res.data.data.records.length === 0) {
+        message.error('已无更多！')
+      }
+      setLetterList(letterList.concat(res.data.data.records))
     })
   }
 
@@ -44,28 +45,32 @@ function MinePage(props) {
       //获取个人的信息数据
       axios({
         method: 'get',
-        url: 'http://39.107.239.89/api/user/info',
+        url: 'https://thenebula.cn/api/user/info',
         headers: {
           'Content-Type': 'application/json;charset=UTF-8',
           'Authorization': `Bearer ${token}`
         }
       }).then((res) => {
-        console.log(res.data.data)
+        
         setUserInfo(res.data.data)
       })
       //到此为止
       //获取信件列表
       axios({
         method: 'get',
-        url: `http://39.107.239.89/api/letter/preview`,
+        url: `https://thenebula.cn/api/letter/preview`,
         headers: {
           'Content-Type': 'application/json;charset=UTF-8',
           'Authorization': `Bearer ${token}`
         },
         params: { 'index': `${pageNumber}` }
       }).then((res) => {
-        console.log(res.data.data)
+        
         setLetterList(res.data.data.records)
+        setLetterMounth(
+          `${res.data.data.records[0].createTime[5]}
+          ${res.data.data.records[0].createTime[6]}月`
+        )
       })
 
     }
@@ -107,12 +112,19 @@ function MinePage(props) {
           </div>
         </div>
         <div className='mine-letter-body'>
-          <div className='mine-letter-mounth'>4月</div>
-          <LetterItem />
-          <LetterItem />
-          <LetterItem />
-          <LetterItem />
-          <div className='get-more' onClick={getMore}>加载更多</div>
+          <div className='mine-letter-mounth'>
+            {
+              letterMounth
+            }
+          </div>
+          {
+            letterList.map((item) => {
+              return (
+                <LetterItem data={item} key={item.id} />
+              )
+            })
+          }
+          <div className='get-more' onClick={getMore}>点击加载更多</div>
         </div>
       </div>
       <div className='footer-body'>
@@ -125,24 +137,5 @@ function MinePage(props) {
   )
 }
 
-const mapStateToProps = state => {
-  console.log(state)
-  return {
-    userInfo: state.userInfo
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setUserInfo: (data) => {
-      dispatch(setUserInfo(data))
-    }
-  }
-}
-
-let Mine = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MinePage)
 
 export default Mine;

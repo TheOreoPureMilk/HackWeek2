@@ -6,9 +6,17 @@ function LetterItem(props) {
   return (
     <div className='letter-box'>
       <div className='letter-time-box'>
-        <div className='letter-time'>17th</div>
+        <div className='letter-time'>
+          {
+            /*props.data.createTime[5] +
+            props.data.createTime[6] +
+            props.data.createTime[7] +*/
+            props.data.createTime[8] +
+            props.data.createTime[9]+'th'
+          }
+        </div>
       </div>
-      <LetterCard />
+      <LetterCard data={props.data.preview} />
     </div>
   )
 }

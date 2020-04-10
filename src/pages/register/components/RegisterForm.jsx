@@ -82,7 +82,7 @@ class RegisterForm extends React.Component {
 
   getNickname = (e) => {
     this.setState({ nickname: e.target.value })
-    if (e.target.value.length < 2) {
+    if (e.target.value.length < 2 || e.target.value.length > 10) {
       this.setState({ effectiveNick: false })
       document.getElementById("nickname").style.visibility = "visible"
     } else {
@@ -115,8 +115,7 @@ class RegisterForm extends React.Component {
 
   handleSubmit = () => {
     const { username, password, nickname } = this.state
-    console.log(username, password, nickname)
-    const url = 'http://39.107.239.89/api/user/'
+    const url = 'https://thenebula.cn/api/user/'
     axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8'
     axios.post(url + 'signup', JSON.stringify({
       username,
@@ -152,7 +151,7 @@ class RegisterForm extends React.Component {
           onChange={this.getNickname}
         />
 
-        <span id="nickname" style={unVisibility}>至少两个字符</span>
+        <span id="nickname" style={unVisibility}>至少两个字符,至多十个字符</span>
 
         <Input.Password size="large"
           placeholder="密码"
