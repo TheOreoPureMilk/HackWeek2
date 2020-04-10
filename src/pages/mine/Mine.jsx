@@ -1,15 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Mine.css'
 import Footer from '../../components/Footer/Footer'
-import headImage from './demo-img.png'
+//import headImage from './demo-img.png'
 import LetterItem from './components/LetterItem'
 import add from './add.png'
 import axios from 'axios';
 import { message } from 'antd';
 import '../../cookies'
 import { getCookie } from '../../cookies';
+import { connect } from 'react-redux'
+import { setUserInfo } from '../../Redux/actions/index.js'
 
-function Mine(props) {
+function MinePage(props) {
+  const [userInfo, setUserInfo] = useState({})
+  const [pageNumber, setPageNumber] = useState(1)
+  const [letterList, setLetterList] = useState([])
+
+  const getMore = () => {
+    let token = getCookie('token')
+    setPageNumber(pageNumber + 1)
+    axios({
+      method: 'get',
+      url: `http://39.107.239.89/api/letter/preview`,
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        'Authorization': `Bearer ${token}`
+      },
+      params: { 'index': `${pageNumber + 1}` }
+    }).then((res) => {
+      console.log(res.data.data)
+      setLetterList(res.data.data.records)
+    })
+  }
+
 
   useEffect(() => {
     let token = getCookie('token')
@@ -18,6 +41,7 @@ function Mine(props) {
       window.location.href = '../login'
     }
     else {
+      //获取个人的信息数据
       axios({
         method: 'get',
         url: 'http://39.107.239.89/api/user/info',
@@ -25,9 +49,28 @@ function Mine(props) {
           'Content-Type': 'application/json;charset=UTF-8',
           'Authorization': `Bearer ${token}`
         }
+      }).then((res) => {
+        console.log(res.data.data)
+        setUserInfo(res.data.data)
       })
+      //到此为止
+      //获取信件列表
+      axios({
+        method: 'get',
+        url: `http://39.107.239.89/api/letter/preview`,
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Authorization': `Bearer ${token}`
+        },
+        params: { 'index': `${pageNumber}` }
+      }).then((res) => {
+        console.log(res.data.data)
+        setLetterList(res.data.data.records)
+      })
+
     }
-  })
+    // eslint-disable-next-line
+  }, [])
 
   return (
     <div className='mine'>
@@ -40,12 +83,12 @@ function Mine(props) {
         </div>
         <div className="user-info">
           <div className='image-box'>
-            <img alt='' src={headImage} className='user-image' />
+            <img alt='' src={`${userInfo.avatar}`} className='user-image' />
           </div>
 
           <div className='user-info-show'>
-            <span className='user-nick'>爱吃草的羊</span>
-            <span className='user-sex'>♂</span>
+            <span className='user-nick'>{userInfo.nickname}</span>
+            <span className='user-sex'>{userInfo.sex}</span>
           </div>
           <button className='change-bg-btn'>
             <span>
@@ -69,6 +112,7 @@ function Mine(props) {
           <LetterItem />
           <LetterItem />
           <LetterItem />
+          <div className='get-more' onClick={getMore}>加载更多</div>
         </div>
       </div>
       <div className='footer-body'>
@@ -80,5 +124,25 @@ function Mine(props) {
     </div>
   )
 }
+
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    userInfo: state.userInfo
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUserInfo: (data) => {
+      dispatch(setUserInfo(data))
+    }
+  }
+}
+
+let Mine = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MinePage)
 
 export default Mine;

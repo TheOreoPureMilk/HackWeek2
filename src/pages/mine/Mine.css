@@ -154,6 +154,10 @@
   width: 100%;
 }
 
+.get-more {
+  height: 0.5rem;
+}
+
 .footer-body {
   width: 100%;
   position: fixed;

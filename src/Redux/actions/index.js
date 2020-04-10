@@ -18,3 +18,10 @@ export const setToken = token => {
     token
   }
 }
+
+export const setUserInfo = (data) => {
+  return {
+    type: 'setUserInfo',
+    data
+  }
+}

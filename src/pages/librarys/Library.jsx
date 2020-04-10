@@ -1,12 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Library.css'
 import Footer from '../../components/Footer/Footer'
 import editor_pen from './editor_pen.png'
 import test_head_img from './test_head_img.png'
 import next from './next.png'
-
+import { getCookie } from '../../cookies';
+import { message } from 'antd'
+import axios from 'axios';
 
 function Library(props) {
+
+  useEffect(() => {
+    let token = getCookie('token')
+    if (token === '' || token === null) {
+      message.error('尚未登录！')
+      window.location.href = '../login'
+    }
+    else {
+      //获取个人的信息数据
+      axios({
+        method: 'get',
+        url: 'http://39.107.239.89/api/user/info',
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          'Authorization': `Bearer ${token}`
+        }
+      }).then((res) => {
+        console.log(res.data.data)
+      })
+      //到此为止
+    }
+  })
   return (
     <div className='lib-body'>
       <div className='switch-tab'>

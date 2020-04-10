@@ -3,7 +3,6 @@ const tokenStorage = (state = '', action) => {
     case 'setToken':
       return action.token;
     default:
-      window.localStorage.setItem('tokens', state)
       return state
   }
 }
