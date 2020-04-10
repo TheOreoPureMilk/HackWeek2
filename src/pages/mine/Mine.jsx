@@ -13,7 +13,7 @@ function Mine(props) {
   const [userInfo, setUserInfo] = useState({})
   const [pageNumber, setPageNumber] = useState(1)
   const [letterList, setLetterList] = useState([])
-  const [letterMounth,setLetterMounth] = useState(String)
+  const [letterMounth, setLetterMounth] = useState(String)
   const getMore = () => {
     let token = getCookie('token')
     setPageNumber(pageNumber + 1)
@@ -51,7 +51,7 @@ function Mine(props) {
           'Authorization': `Bearer ${token}`
         }
       }).then((res) => {
-        
+
         setUserInfo(res.data.data)
       })
       //到此为止
@@ -65,7 +65,7 @@ function Mine(props) {
         },
         params: { 'index': `${pageNumber}` }
       }).then((res) => {
-        
+
         setLetterList(res.data.data.records)
         setLetterMounth(
           `${res.data.data.records[0].createTime[5]}
@@ -105,10 +105,18 @@ function Mine(props) {
       <div className='mine-body'>
         <div className='mine-body-tab'>
           <div className='luck-item'>
-            <div className='luck-item-text'>幸运信</div>
+            <div className='luck-item-text'
+              onClick={() => { message.info('抱歉，切换功能未能完善，默认显示所有') }}
+            >
+              幸运信
+            </div>
           </div>
           <div className='sad-item'>
-            <div className='sad-item-text'>解忧信</div>
+            <div className='sad-item-text'
+              onClick={() => { message.info('抱歉，切换功能未能完善，默认显示所有') }}
+            >
+              解忧信
+            </div>
           </div>
         </div>
         <div className='mine-letter-body'>

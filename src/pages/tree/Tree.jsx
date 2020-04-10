@@ -32,7 +32,7 @@ function Tree(props) {
   }
 
   const daySign = () => {
-    message.success('签到成功！')
+    message.success('签到成功！(假的，功能尚未完善）')
   }
 
   return (
