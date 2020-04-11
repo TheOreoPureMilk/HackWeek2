@@ -6,8 +6,7 @@ import LetterItem from './components/LetterItem'
 import add from './add.png'
 import axios from 'axios';
 import { message } from 'antd';
-import '../../cookies'
-import { getCookie } from '../../cookies';
+import { getCookie } from '../../cookies'
 
 function Mine(props) {
   const [userInfo, setUserInfo] = useState({})
@@ -108,14 +107,14 @@ function Mine(props) {
             <div className='luck-item-text'
               onClick={() => { message.info('抱歉，切换功能未能完善，默认显示所有') }}
             >
-              幸运信
+              Luck
             </div>
           </div>
           <div className='sad-item'>
             <div className='sad-item-text'
               onClick={() => { message.info('抱歉，切换功能未能完善，默认显示所有') }}
             >
-              解忧信
+              Complaint
             </div>
           </div>
         </div>
@@ -139,7 +138,10 @@ function Mine(props) {
         <Footer />
       </div>
       <div className='mine-add'>
-        <img src={add} alt="新建" className='mine-add-img' />
+        <img src={add} alt="新建"
+          className='mine-add-img'
+          onClick={() => { window.location.href = './editor'}}
+        />
       </div>
     </div>
   )

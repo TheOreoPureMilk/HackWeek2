@@ -12,6 +12,7 @@ import Mine from './pages/mine/Mine'
 import Retrieve from './pages/retrieve/Retrieve'
 import Library from './pages/librarys/Library';
 import Tree from './pages/tree/Tree'
+import Editor from './pages/editor/editor';
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
           </Route>
           <Route path="/library" exact>
             <Library />
+          </Route>
+          <Route path='/editor' exact>
+            <Editor />
           </Route>
         </Switch>
       </Router>

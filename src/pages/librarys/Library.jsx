@@ -131,12 +131,12 @@ class Library extends React.Component {
         <div className='switch-tab'>
           <div className='to-luck-letter' onClick={this.onLuckClick}>
             <div className='switch-box' style={this.state.checkedLuck}>
-              <div>幸运信</div>
+              <div>Luck</div>
             </div>
           </div>
           <div className='to-sad-letter' onClick={this.onSadClick}>
             <div className='switch-box' style={this.state.checkedSad}>
-              <div>解忧信</div>
+              <div>Complaint</div>
             </div>
           </div>
         </div>
@@ -160,7 +160,10 @@ class Library extends React.Component {
           </div>
         </div>
         <div className='editor-pen-content'>
-          <img src={editor_pen} alt='pen' className='editor-pen-img' />
+          <img src={editor_pen} alt='pen'
+            className='editor-pen-img'
+            onClick={() => { window.location.href = './editor' }}
+          />
         </div>
         <div className='footer-body'>
           <Footer />

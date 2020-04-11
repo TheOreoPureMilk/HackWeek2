@@ -38,6 +38,15 @@
   </style>
 </head>
 <script>
+  document.addEventListener('gesturestart', function (event) {
+    var event = event || window.event
+    if (typeof event.preventDefault != 'undefined') {//w3c
+      e.preventDefault();
+    } else {
+      e.returnValue = false;
+    }
+  });
+
   ; (function (designWidth, maxWidth) {
     var doc = document,
       win = window;
