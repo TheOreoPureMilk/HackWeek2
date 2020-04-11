@@ -115,7 +115,7 @@ class RegisterForm extends React.Component {
 
   handleSubmit = () => {
     const { username, password, nickname } = this.state
-    const url = 'c/user/'
+    const url = 'https://39.107.239.89/user/'
     axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8'
     axios.post(url + 'signup', JSON.stringify({
       username,
