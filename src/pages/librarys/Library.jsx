@@ -2,7 +2,6 @@ import React from 'react'
 import './Library.css'
 import Footer from '../../components/Footer/Footer'
 import editor_pen from './editor_pen.png'
-import test_head_img from './test_head_img.png'
 import next from './next.png'
 import { getCookie } from '../../cookies';
 import { message } from 'antd'
@@ -19,7 +18,8 @@ class Library extends React.Component {
       },
       checkudSad: {},
       token: String,
-      letterObject: {}
+      letterObject: {},
+      headImage: ''
     }
   }
 
@@ -43,8 +43,10 @@ class Library extends React.Component {
       },
       params: { letterType: 1 }
     }).then((res) => {
-      console.log(res.data.data)
-      this.setState({ letterObject: res.data.data })
+      this.setState({
+        letterObject: res.data.data,
+        headImage: res.data.data.avatarUrl
+      })
     })
   }
 
@@ -68,8 +70,10 @@ class Library extends React.Component {
       },
       params: { letterType: 2 }
     }).then((res) => {
-      console.log(res.data.data)
-      this.setState({ letterObject: res.data.data })
+      this.setState({
+        letterObject: res.data.data,
+        headImage: res.data.data.avatarUrl
+      })
     })
   }
 
@@ -106,8 +110,10 @@ class Library extends React.Component {
         },
         params: { letterType: this.state.tabClass }
       }).then((res) => {
-        console.log(res.data.data)
-        this.setState({ letterObject: res.data.data })
+        this.setState({
+          letterObject: res.data.data,
+          headImage: res.data.data.avatarUrl
+        })
       })
     }
   }
@@ -121,8 +127,10 @@ class Library extends React.Component {
       },
       params: { letterType: this.state.tabClass }
     }).then((res) => {
-      console.log(res.data.data)
-      this.setState({ letterObject: res.data.data })
+      this.setState({
+        letterObject: res.data.data,
+        headImage: res.data.data.avatarUrl
+      })
     })
   }
   render() {
@@ -143,7 +151,7 @@ class Library extends React.Component {
         <div className='letter-content'>
           <div className='letter-content-head'>
             <div className='user-head-img-content'>
-              <img src={test_head_img} alt='头像' className='user-head-img' />
+              <img src={this.state.headImage} alt='头像' className='user-head-img' />
             </div>
             <div className='user-name-content'>
               <div className='lib-user-name'>{this.state.letterObject.nickname}</div>
@@ -174,39 +182,3 @@ class Library extends React.Component {
 }
 
 export default Library;
-
-
-/*function Library(props) {
-  const [tabClass, setTabClass] = useState(0)
-  const [checkedLuck, setCheckLuch] = useState({})
-  const [checkedSad, setCheckSad] = useState({})
-
-  useEffect(() => {
-    let token = getCookie('token')
-    if (token === '' || token === null) {
-      message.error('尚未登录！')
-      window.location.href = '../login'
-    }
-    else {
-
-      //获取个人的信息数据
-      /*axios({
-        method: 'get',
-        url: 'https://thenebula.cn/api/user/info',
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          'Authorization': `Bearer ${token}`
-        }
-      }).then((res) => {
-        console.log(res.data.data)
-      })*/
-      //到此为止
-    //}
-//  })
-//  return (
-
-
-// )
-//}
-
-//export default Library
