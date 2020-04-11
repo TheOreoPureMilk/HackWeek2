@@ -3,10 +3,14 @@ import logo from '../login/logo.png'
 import { Link } from 'react-router-dom';
 import RegisterForm from './components/RegisterForm'
 
+const register = {
+  height: '0.30rem'
+}
+
 function Register(props) {
   return (
     <div className="login-body">
-      <div className="register">
+      <div style={register}>
         <Link to="./login" style={{ float: "right", color: "white" }}>返回登录</Link>
       </div>
       <div className="logo-box">
