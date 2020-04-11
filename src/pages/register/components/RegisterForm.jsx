@@ -115,7 +115,7 @@ class RegisterForm extends React.Component {
 
   handleSubmit = () => {
     const { username, password, nickname } = this.state
-    const url = 'https://39.107.239.89/user/'
+    const url = 'https://thenebula.cn/api/user/'
     axios.defaults.headers['Content-Type'] = 'application/json;charset=UTF-8'
     axios.post(url + 'signup', JSON.stringify({
       username,
@@ -130,7 +130,7 @@ class RegisterForm extends React.Component {
         message.error(`${res.data.message}`)
       }
     }, (err) => {
-      message.error(err)
+      message.error('网络出现问题！')
     })
   }
 
