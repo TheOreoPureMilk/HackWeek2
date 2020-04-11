@@ -1,0 +1,46 @@
+.footer {
+  margin-top: -0.2rem;
+  width: 100%;
+  height: .5rem;
+  background-color: #ECEAEA;
+  display: flex;
+  justify-content: space-around;
+}
+
+.swicth-to-tree, .swicth-to-mine, .swicth-to-lib {
+  width: 33%;
+  display: flex;
+  justify-content: center;
+  color: #81BEB2;
+}
+
+.tree-content, .mine-content, .lib-content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: .5rem;
+  font-size: 0.12rem;
+  z-index: 100;
+}
+
+.lib-content {
+  color: #ECEAEA;
+}
+
+.mine-img, .tree-img, .lib-img {
+  width: .4rem;
+  height: .3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lib-bg {
+  position: fixed;
+  margin-top: -0.15rem;
+}
+
+.lib-bg-img {
+  max-width: 1.39rem;
+  max-height: 1.45rem;
+}

@@ -1,0 +1,45 @@
+.card-body {
+  width: 2.80rem;
+  height: 1.10rem;
+  background-color: #F5F5F5;
+  border-radius: 0.1rem;
+  box-shadow: 3px 3px 10px #7c7a7a;
+  margin-left: 0.1rem;
+  padding: 0.1rem;
+}
+
+.out-border {
+  width: 0.33rem;
+  height: 0.38rem;
+  background-image: url('./邮票边框.png');
+  background-size: 0.32rem 0.37rem;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+}
+
+.color-in {
+  margin-right: 1px;
+  width: 0.24rem;
+  height: 0.29rem;
+  background-color: #FE7D8B;
+  border: 1px solid #707070;
+  border-radius: 2px;
+}
+
+.text-content-box {
+  width: 2.2rem;
+  height: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.text-content {
+  width: 2.0rem;
+  font-size: 0.13rem;
+  font-weight: 700;
+  color: #6E9DA9;
+  padding-left: 0.1rem;
+}

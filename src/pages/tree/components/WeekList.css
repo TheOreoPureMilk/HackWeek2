@@ -1,0 +1,15 @@
+.week-list-body {
+  width: 100%;
+  height: 0.76rem;
+  background-color: #B3DDD1;
+  display: flex;
+}
+
+.week-box {
+  width: 14.2%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+}

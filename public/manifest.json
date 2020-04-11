@@ -16,6 +16,11 @@
       "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "../src/pages/login/login_bg.png",
+      "type": "image/png",
+      "sizes": "375x667"
     }
   ],
   "start_url": ".",
