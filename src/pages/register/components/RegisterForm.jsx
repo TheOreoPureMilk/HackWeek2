@@ -124,11 +124,13 @@ class RegisterForm extends React.Component {
     })
     ).then((res) => {
       if (res.data.status === 0) {
-        message.success(res.data.message + '!注册成功')
+        message.success(res.data.message + '!注册成功,请查看邮箱验证！')
       }
       else if (res.data.status === 2) {
         message.error(`${res.data.message}`)
       }
+    }, (err) => {
+      alert(err)
     })
   }
 
