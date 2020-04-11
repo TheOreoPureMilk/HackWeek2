@@ -130,7 +130,7 @@ class RegisterForm extends React.Component {
         message.error(`${res.data.message}`)
       }
     }, (err) => {
-      alert(err)
+      message.error(err)
     })
   }
 
